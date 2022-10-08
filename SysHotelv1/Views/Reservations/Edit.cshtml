@@ -1,0 +1,119 @@
+﻿@model SysHotelv1.Models.Reservation
+
+@{
+    ViewBag.Title = "Editar";
+}
+
+<h2>Editar</h2>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    <h4>Reservacion</h4>
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(model => model.Id)
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ClientId, "ClientId", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("ClientId", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.ClientId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.AllInclusive, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <div class="checkbox">
+                                @Html.EditorFor(model => model.AllInclusive)
+                                @Html.ValidationMessageFor(model => model.AllInclusive, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.CheckIn, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.CheckIn, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.CheckIn, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.CheckOut, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.CheckOut, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.CheckOut, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.BookingStatusId, "BookingStatusId", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("BookingStatusId", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.BookingStatusId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.IdEmployee, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("IdEmployee", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.BookingStatusId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Guardar" class="btn btn-success" />
+                            @Html.ActionLink("Ver detalles", "Create", "ReservationDetails", new { id = Model.Id }, htmlAttributes: new { @class = "btn btn-primary" })
+                        </div>
+                    </div>
+                </div>
+
+
+            }
+        </div>
+        <div class="col-md-6">
+            <h2>Disponibilidad</h2>
+            <input type="button" value="Validar Disponibilidad " class="btn btn-default" id="btnValidateAvailability" onclick="ValidateAvailability()" />
+            <div id="divPartialView">
+
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+    @Html.ActionLink("Volver a la Lista", "Index", "Reservations", htmlAttributes: new { @class = "btn btn-primary" })
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+    $(document).ready(function () {
+        $('#btnValidateAvailability').click(function (e) {
+            e.preventDefault();
+            var checkIn = $("#CheckIn").val();
+            var checkOut = $("#CheckOut").val();
+            $.ajax({
+                url: "@Url.Action("Rooms", "Reservations")",
+                data: { CheckIn: checkIn, CheckOut: checkOut },
+                type: "Get",
+                dataType: "html",
+                cache: false,
+                success: function (data) {
+                    $("#divPartialView").html(data);
+                }
+            });
+        }
+    )})
+
+    </script>
+
+}

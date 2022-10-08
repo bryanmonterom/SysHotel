@@ -1,0 +1,66 @@
+﻿@model SysHotelv1.Models.Invoices
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Invoices</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ReservationDetails.Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReservationDetails.Id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PriceAdult)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PriceAdult)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PriceChild)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PriceChild)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DayCount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DayCount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SeasonalDiscount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SeasonalDiscount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Total)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Total)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

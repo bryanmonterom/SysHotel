@@ -1,0 +1,57 @@
+﻿@model IEnumerable<SysHotelv1.Models.Reservation>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Crear nueva", "Create","Reservations",null,htmlAttributes:new {@class= "btn btn-primary" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.BookingStatus.DescriptionStatus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Clients.FullName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AllInclusive)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CheckIn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CheckOut)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.BookingStatus.DescriptionStatus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Clients.FullName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AllInclusive)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CheckIn)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CheckOut)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id = item.Id }, htmlAttributes: new { @class = "btn btn-primary" }) |
+            @Html.ActionLink("Ver detalles", "Create","ReservationDetails", new { id = item.Id }, htmlAttributes: new { @class = "btn btn-warning" })
+            @Html.ActionLink("Eliminar", "Delete", new { id = item.Id }, htmlAttributes: new { @class = "btn btn-danger" })
+        </td>
+    </tr>
+}
+
+</table>

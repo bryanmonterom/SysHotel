@@ -1,0 +1,54 @@
+@{
+ Layout = null;
+}
+@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+        @Html.AntiForgeryToken()
+
+        <div class="nav-side-menu">
+            <div class="brand">Brand Logo</div>
+            <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+            <div class="menu-list">
+                <ul id="menu-content" class="menu-content collapse out">
+                    <li>
+                        <a href="@Url.Action("Index", "Home")"><i class="fa fa-home fa-lg"></i>Home<span class="arrow"></span></a>
+                    </li>
+                    <li data-toggle="collapse" data-target="#products" class="collapsed active">
+                        <a href="#"><i class="fa fa-wrench fa-lg"></i>Mantenimientos<span class="arrow"></span></a>
+                    </li>
+                    <ul class="sub-menu collapse" id="products">
+                        <li class="active"><a href="@Url.Action("Index", "Cities")">Ciudades</a></li>
+                        <li><a href="@Url.Action("Index", "Countries")">Paises</a></li>
+                        <li><a href="@Url.Action("Index", "Clients")">Clientes</a></li>
+                        <li><a href="@Url.Action("Index", "Buildings")">Edificios</a></li>
+                        <li><a href="@Url.Action("Index", "Employees")">Empleados</a></li>
+                        <li><a href="@Url.Action("Index", "BookingStatus")">Estatus</a></li>
+                        <li><a href="@Url.Action("Index", "Rooms")">Habitaciones</a></li>
+                    </ul>
+                    <li data-toggle="collapse" data-target="#service" class="collapsed">
+                        <a href="#"><i class="fa fa-hotel"></i> Operaciones <span class="arrow"></span></a>
+                    </li>
+                    <ul class="sub-menu collapse" id="service">
+                        <li><a href="@Url.Action("Index", "Reservations")">Reservas</a></li>
+                    </ul>
+
+                    <li data-toggle="collapse" data-target="#adm" class="collapsed">
+                        <a href="#"><i class="fa fa-users fa-lg"></i> Administracion <span class="arrow"></span></a>
+                    </li>
+                    <ul class="sub-menu collapse" id="adm">
+                        <li>@Html.ActionLink("Tipos de Camas", "Index", "BedTypes")</li>
+                        <li>@Html.ActionLink("Tipos de Personas", "Index", "PersonTypes")</li>
+                        <li>@Html.ActionLink("Tipos de Habitaciones", "Index", "RoomTypes")</li>
+                        <li>@Html.ActionLink("Usuarios", "Index", "Account")</li>
+                    </ul>
+                </ul>
+            </div>
+        </div>
+}
+else
+{
+
+}
+
+

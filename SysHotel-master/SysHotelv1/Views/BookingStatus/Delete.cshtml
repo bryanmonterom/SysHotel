@@ -1,0 +1,33 @@
+﻿@model SysHotelv1.Models.BookingStatus
+
+@{
+    ViewBag.Title = "Eliminar";
+}
+
+    <h2>Estatus </h2>>
+
+<h3>Estas seguro que deseas eliminar este elemento?</h3>
+
+<div>
+    <h4>Estatus</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DescriptionStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DescriptionStatus)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            @Html.ActionLink("Volver a la Lista", "Index","BookingStatus", htmlAttributes: new {@class="btn btn-primary"})
+        </div>
+    }
+</div>

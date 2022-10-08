@@ -1,0 +1,32 @@
+﻿@model IEnumerable<SysHotelv1.Models.BookingStatus>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Crear nuevo", "Create", "BookingStatus", htmlAttributes: new {@class = "btn btn-primary" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DescriptionStatus)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DescriptionStatus)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.Id }, htmlAttributes: new {@class = "btn btn-primary" }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.Id }, htmlAttributes: new {@class = "btn btn-danger" })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,74 @@
+﻿@model SysHotelv1.Models.Invoices
+
+@{
+    ViewBag.Title = "Eliminar";
+}
+
+<h2>Eliminar</h2>
+
+<h3>Estas seguro que deseas eliminar este elemento?</h3>
+
+<div>
+    <h4>Invoices</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ReservationDetails.Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReservationDetails.Id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PriceAdult)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PriceAdult)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PriceChild)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PriceChild)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DayCount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DayCount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SeasonalDiscount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SeasonalDiscount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Total)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Total)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+    <div class="form-actions no-color">
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        @Html.ActionLink("Volver a la Lista", "Index", "Invoices", htmlAttributes: new { @class = "btn btn-primary" })
+
+    </div>
+    }
+</div>

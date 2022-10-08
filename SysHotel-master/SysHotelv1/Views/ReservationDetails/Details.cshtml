@@ -1,0 +1,50 @@
+﻿@model SysHotelv1.Models.ReservationDetails
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ReservationDetails</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Reservation.RoomNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Reservation.RoomNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Rooms.RoomNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Rooms.RoomNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ChildQty)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ChildQty)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AdultQty)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AdultQty)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

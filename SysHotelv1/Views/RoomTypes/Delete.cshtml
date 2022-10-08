@@ -1,0 +1,35 @@
+﻿@model SysHotelv1.Models.RoomType
+@{
+    ViewBag.Title = "Eliminar";
+}
+<h2>Eliminar</h2>
+<h3>Estas seguro que deseas eliminar este elemento?</h3>
+
+<div>
+    <h4>Tipo de Habitacion</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PricePerRoom)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PricePerRoom)
+        </dd>
+    </dl>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+    <div class="form-actions no-color">
+        <input type="submit" value="Eliminar" class="btn btn-danger" /> |
+        @Html.ActionLink("Volver a la Lista", "Index", "RoomTypes", htmlAttributes: new { @class = "btn btn-primary" })
+
+    </div>
+    }
+</div>

@@ -1,0 +1,95 @@
+@model IEnumerable<SysHotelv1.Models.ViewModelReservationDetails>
+
+@{
+    Layout = null;
+}
+    <div id="divPartialView" name="divPartialView">
+        <hr />
+        <div class="Error">
+            @Html.Raw(ViewBag.Notification)
+        </div>
+        <br />
+        <label class="text-info">Cantidad de Habitaciones:</label> @Model.Count()
+        <br />
+        <label class="text-info">Cantidad de Dias:</label> @ViewBag.DaysQty
+        <br />
+        <hr />
+        <div class="container">
+            @foreach (var item in Model)
+            {
+                <label> Tipo de Habitacion:</label> @item.Rooms.RoomType.Description
+                <br />
+                <label>Precio de Habitacion:</label> @item.Rooms.RoomType.PricePerRoom
+                <br />
+                <label>Precio de Habitacion:</label> @item.TotalForRoom
+                <br />
+                <br />
+                <table class="table-hover" style="width:45%">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Id)
+                        </th>
+                        <th>@Html.DisplayNameFor(model => model.ChildQty)</th>
+                        <th> @Html.DisplayNameFor(model => model.PricePerChildren)</th>
+                        <th> @Html.DisplayNameFor(model => model.TotalForChildren)</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            Ninos
+                        </td>
+                        <td>
+                            @item.ChildQty
+                        </td>
+                        <td>
+                            @item.PricePerChildren
+                        </td>
+                        <td>
+                            @item.TotalForChildren
+                        </td>
+                    </tr>
+                </table>
+                <br />
+                
+                <table class="table-hover" style="width:45%">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Id)
+                        </th>
+                        <th>@Html.DisplayNameFor(model => model.AdultQty)</th>
+                        <th> @Html.DisplayNameFor(model => model.PricePerAdults)</th>
+                        <th> @Html.DisplayNameFor(model => model.TotalForAdults)</th>
+                        <th> </th>
+                    </tr>
+                    <tr>
+                        <td>
+                            Adultos
+                        </td>
+                        <td>
+                            @item.AdultQty
+                        </td>
+                        <td>
+                            @item.PricePerAdults
+                        </td>
+                        <td>
+                            @item.TotalForAdults
+                        </td>
+                        <td>
+                        </td>
+
+
+                    </tr>
+                </table>
+                <input type="button" class="btn btn-danger" onclick="onDelete(@item.Id)" value="Eliminar" />
+
+                <hr />
+            }
+        </div>
+        <label>Total:</label>@Model.Select(a => a.Total).FirstOrDefault()<label id=lblTotal></label>
+    </div>
+
+@section Scripts
+    {
+    @Scripts.Render("~/bundles/jqueryval")
+
+}
+

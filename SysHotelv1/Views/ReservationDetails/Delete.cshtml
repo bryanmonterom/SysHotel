@@ -1,0 +1,57 @@
+﻿@model SysHotelv1.Models.ReservationDetails
+
+@{
+    ViewBag.Title = "Eliminar";
+}
+
+<h2>Eliminar</h2>
+
+<h3>Estas seguro que deseas eliminar este elemento?</h3>
+<div>
+    <h4>Detalles de la Reservacion</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Reservation.RoomNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Reservation.RoomNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Rooms.RoomNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Rooms.RoomNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ChildQty)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ChildQty)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AdultQty)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AdultQty)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+    <div class="form-actions no-color">
+        <input type="submit" value="Eliminar" class="btn btn-danger" /> |
+        @Html.ActionLink("Volver a la Lista", "Index", "ReservationDetails", htmlAttributes: new { @class = "btn btn-primary" })
+
+    </div>
+    }
+</div>
